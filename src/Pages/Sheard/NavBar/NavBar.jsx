@@ -5,13 +5,13 @@ const NavBar = () => {
     const user = null
     const navItem = <>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/blog'>Blog</Link></li>
-        <li><Link to='/alltoys'>All Toys</Link></li>
+        <li><Link to='/instructors'>Instructors</Link></li>
+        <li><Link to='/classes'>Classes</Link></li>
 
         {user ? <>
-            <li><Link to='/mytoys'>My Toys</Link></li>
-            <li><Link to='/addtoy'>Add Toys</Link></li>
+            <li><Link to='/dashboard'>Dashboard</Link></li>
             <li><button>logOut</button></li>
+            
         </> : <li><Link to='/login'>LogIn</Link></li>}
 
     </>
@@ -28,7 +28,7 @@ const NavBar = () => {
                             {navItem}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl"></a>
+                    <a className="btn btn-ghost normal-case text-2xl font-bold">Art &<span className="text-amber-500">Craft</span></a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -36,7 +36,9 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    {user?<div className="w-10 rounded-full">
+                <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+            </div>: ''}
                 </div>
             </div>
         </div>
