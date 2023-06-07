@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
+import useClasses from "../../../hooks/useClasses";
 
 
 const NavBar = () => {
     const user = null
+    const [classes] = useClasses();
+    console.log(classes)
     const navItem = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/instructors'>Instructors</Link></li>
