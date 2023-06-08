@@ -8,12 +8,14 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUP/SignUp";
 import Selects from "../Pages/Selects/Selects";
 import PrivateRoute from "./PrivateRoutes";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
