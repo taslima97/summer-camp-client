@@ -1,10 +1,40 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 
 // eslint-disable-next-line react/prop-types
 const Class = ({ info }) => {
     // eslint-disable-next-line react/prop-types
-    const { image, Name, price, studentQuantity, availableSeats, instructorName } = info;
+    const {_id, image, Name, price, studentQuantity, availableSeats, instructorName } = info;
+const {user} = useContext(AuthContext);
+const handelCart = info =>{
+    console.log(info)
+    if (user&& user.email) {
+        const selectedInfo = {selectId:_id,image, Name, price, studentQuantity, availableSeats,instructorName, email:user.email}
+        fetch('http://localhost:5000/carts',{
+            method:'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body:JSON.stringify(selectedInfo)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if (data.insertedId) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Your work has been saved',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            }
+        })
+    }
+}
+
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
@@ -20,7 +50,7 @@ const Class = ({ info }) => {
                 <div className="flex mt-4">
                     <p className="text-xl mr-12 font-bold">Price: {price}</p>
                     <div>
-                        <Link><button className="btn bg-amber-500">select</button></Link>
+                        <Link to='/select'><button onClick={()=>handelCart(info)} className="btn bg-amber-500">select</button></Link>
                     </div>
                 </div>
             </div>
