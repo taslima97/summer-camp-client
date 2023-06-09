@@ -9,6 +9,8 @@ import SignUp from "../Pages/SignUP/SignUp";
 import Selects from "../Pages/Selects/Selects";
 import PrivateRoute from "./PrivateRoutes";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import Dashboard from "../Layout/Dashboard";
+import MyClass from "../Pages/Dashboard/MyClass/MyClass";
 
 
 export const router = createBrowserRouter([
@@ -37,7 +39,16 @@ export const router = createBrowserRouter([
         path: '/select',
         element:<PrivateRoute><Selects></Selects></PrivateRoute>
       }
+    ],
+   },
+   {
+    path:'dashboard',
+    element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    children:[
+      {
+        path:'myclass',
+        element:<MyClass></MyClass>
+      }
     ]
-
-  },
+   }
 ]);
