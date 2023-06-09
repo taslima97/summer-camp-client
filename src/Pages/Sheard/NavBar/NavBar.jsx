@@ -48,7 +48,7 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    {user ? <div className="w-10 rounded-full">
+                    {user ? <div className="w-10 h-10 rounded-full">
                         <img src={user?.photoURL} />
                     </div> : ''}
                 </div>

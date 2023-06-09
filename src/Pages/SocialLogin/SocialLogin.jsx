@@ -40,8 +40,8 @@ const handelGoogleSignIn = () =>{
         <div>
             <div className="divider">OR</div>
             <div className="w-full text-center my-4">
-                <button onClick={handelGoogleSignIn} className="btn btn-circle btn-outline">
-                    <FaGoogle></FaGoogle>
+                <button onClick={handelGoogleSignIn} className="btn btn-outline">
+                   Google <FaGoogle></FaGoogle>
                 </button>
             </div>
         </div>
