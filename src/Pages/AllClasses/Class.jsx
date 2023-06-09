@@ -50,7 +50,7 @@ const handelCart = info =>{
                 <div className="flex mt-4">
                     <p className="text-xl mr-12 font-bold">Price: {price}</p>
                     <div>
-                        <Link to='/select'><button onClick={()=>handelCart(info)} className="btn bg-amber-500">select</button></Link>
+                        <Link to='/dashboard/myclass'><button onClick={()=>handelCart(info)} className="btn bg-amber-500">select</button></Link>
                     </div>
                 </div>
             </div>
