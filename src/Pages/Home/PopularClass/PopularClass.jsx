@@ -8,7 +8,7 @@ const PopularClass = () => {
         return (b.studentQuantity- a.studentQuantity);
       })
 
-      const slicedinfo = classes.slice(0, 3);
+      const slicedinfo = classes.slice(0, 6);
       console.log(slicedinfo)
     return (
         <div>

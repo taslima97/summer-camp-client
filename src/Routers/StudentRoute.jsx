@@ -4,20 +4,21 @@ import { Navigate, useLocation } from "react-router-dom";
 
 import useAuth from "../hooks/useAuth";
 
-import useInstructor from "../hooks/useInstructor";
+
+import useStudent from "../hooks/useStudent";
 
 
 // eslint-disable-next-line react/prop-types
-const InstructorRoute = ({ children }) => {
+const StudentRoute = ({ children }) => {
 
     const { user, loading } = useAuth();
-    const [isInstructor, isInstructorLoading] = useInstructor();
+    const [isStudent, isStudentLoading] = useStudent();
      const location = useLocation();
-    if (loading || isInstructorLoading) {
+    if (loading || isStudentLoading) {
         return <progress className="progress w-56"></progress>
     }
 
-    if (user && isInstructor) {
+    if (user && isStudent) {
         return children;
     }
 
@@ -25,4 +26,4 @@ const InstructorRoute = ({ children }) => {
 
 };
 
-export default InstructorRoute;
+export default StudentRoute;

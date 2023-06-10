@@ -1,19 +1,58 @@
 import { useForm } from "react-hook-form";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 const AddClass = () => {
-    const { register, handleSubmit,} = useForm();
-    const onSubmit = data => console.log(data);
+    const [axiosSecure] = useAxiosSecure();
+    const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
+    console.log(img_hosting_token)
+    const { register, handleSubmit, } = useForm();
+    const img_hosting_url = `https://api.imgbb.com/1/upload?expiration=600&key=${img_hosting_token}`
+
+    const onSubmit = data => {
+        const formData = new FormData();
+        formData.append('image', data.image[0])
+
+        fetch(img_hosting_url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgResponse => {
+                if (imgResponse.success) {
+                    const imgUrl = imgResponse.data.display_url;
+                    const { Name, availableSeats, email, instructorName, price, studentQuantity } = data;
+                    const allClass = { Name, availableSeats, email, instructorName, price, studentQuantity, image: imgUrl }
+                    // console.log(allClass)
+                    axiosSecure.post('/classes', allClass)
+                        .then(data => {
+                            console.log('after posting:', data.data)
+                            if (data.data.insertedId) {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Add successfully',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                }) 
+                            }
+                        })
+                }
+            })
+
+    }
+    // console.log(img_hosting_token)
     return (
         <div>
             <h2 className="text-4xl text-center">Add a new class</h2>
-            <form  onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-2 my-24">
+            <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-2 my-24">
                 <div>
                     <label>Class Name: <br /></label>
                     <input className="input input-bordered my-4 w-full max-w-xs"
                         type="text"
                         placeholder="class name"
-                        {...register("Name", { required: true })} 
+                        {...register("Name", { required: true })}
                     />
                 </div>
 
@@ -22,7 +61,7 @@ const AddClass = () => {
                     <input className="input input-bordered my-4 w-full max-w-xs"
                         type="file"
                         placeholder=" Class image"
-                        {...register("image", { required: true })} 
+                        {...register("image", { required: true })}
                     />
                 </div>
 
@@ -31,7 +70,7 @@ const AddClass = () => {
                     <input className="input input-bordered my-4 w-full max-w-xs"
                         type="text"
                         placeholder="Instructor name"
-                        {...register("instructorName", { required: true })} 
+                        {...register("instructorName", { required: true })}
                     />
                 </div>
 
@@ -40,7 +79,7 @@ const AddClass = () => {
                     <input className="input input-bordered my-4 w-full max-w-xs"
                         type="email"
                         placeholder="Your email"
-                        {...register("email", { required: true })} 
+                        {...register("email", { required: true })}
                     />
                 </div>
 
@@ -49,7 +88,15 @@ const AddClass = () => {
                     <input className="input input-bordered my-4 w-full max-w-xs"
                         type="text"
                         placeholder="availableSeats"
-                        {...register("available sets", { required: true })} 
+                        {...register("availableSeats", { required: true })}
+                    />
+                </div>
+                <div>
+                    <label>Enroll:</label>
+                    <input className="input input-bordered my-4 w-full max-w-xs"
+                        type="text"
+                        placeholder="enroll"
+                        {...register("studentQuantity", { required: true })}
                     />
                 </div>
 
@@ -58,7 +105,7 @@ const AddClass = () => {
                     <input className="input input-bordered my-4 w-full max-w-xs"
                         type="text"
                         placeholder="Price"
-                        {...register("price", { required: true })} 
+                        {...register("price", { required: true })}
                     />
                 </div>
 
