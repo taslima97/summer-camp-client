@@ -19,7 +19,7 @@ const Popular = ({info}) => {
                 <div className="flex mt-4">
                     <p className="text-xl mr-12 font-bold">Price: {price}</p>
                     <div>
-                        <button className="btn bg-amber-500">Buy Now</button>
+                        <button className="btn bg-amber-500">select</button>
                     </div>
                 </div>
             </div>

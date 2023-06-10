@@ -25,18 +25,17 @@ const [isAdmin] = useAdmin();
         isAdmin?<>
         {/* AdminContent */}
         <Link to='/dashboard/home'>Admin home</Link>
-        <Link to='/dashboard/myclass'>My Class</Link>
-        <Link>My enrolled class</Link>
-        <Link>Payment history</Link>
-        <Link to='/dashboard/users'>All Users</Link>
+       <Link >Manage Class</Link>
+        
+        <Link to='/dashboard/users'>Manage Users</Link>
         <div className="divider"></div> 
         </>:isInstructor
         ?<>
         {/* instructor content */}
         <Link to='/dashboard/home'>Instructor home</Link>
-        <Link to='/dashboard/myclass'>My Class</Link>
-        <Link>My enrolled class</Link>
-        <Link>Payment history</Link>
+        
+        <Link to='/dashboard/addclass'>Add a Class</Link>
+        <Link>All class</Link>
         </>:
         
         <>
