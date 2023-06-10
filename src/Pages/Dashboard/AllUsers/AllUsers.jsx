@@ -54,10 +54,7 @@ const AllUsers = () => {
             })
     }
 
-    const handelDelete = user => {
-        console.log(user)
-    }
-
+    
 
     return (
         <div className="w-full">
@@ -83,7 +80,7 @@ const AllUsers = () => {
                             <td>{user.email}</td>
                             <td>{user.role === 'admin' ? 'admin' : <button onClick={() => handelMakeAdmin(user)} className="btn btn-ghost bg-yellow-600 text-white">Admin</button>}</td>
                             <td>{user.role === 'instructor' ? 'instructor' : <button onClick={() => handelMakeInstructor(user)} className="btn btn-ghost bg-yellow-600 text-white">Instructor</button>}</td>
-                            <td> <button onClick={() => handelDelete(user)} className="btn btn-ghost bg-red-600 text-white">Delete</button></td>
+                            
                         </tr>)}
 
                     </tbody>

@@ -17,7 +17,7 @@ const NavBar = () => {
     }
     const navItem = <>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/instructors'>Instructors</Link></li>
+        <li><Link to='/select'>Instructors</Link></li>
         <li><Link to='/classes'>Classes</Link></li>
 
         {user ? <>

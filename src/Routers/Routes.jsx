@@ -6,7 +6,7 @@ import Home from "../Pages/Home/Home/Home";
 import AllClasses from "../Pages/AllClasses/AllClasses";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUP/SignUp";
-import Selects from "../Pages/Selects/Selects";
+import Selects from "../Pages/Instructor/Instructor";
 import PrivateRoute from "./PrivateRoutes";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Dashboard from "../Layout/Dashboard";
