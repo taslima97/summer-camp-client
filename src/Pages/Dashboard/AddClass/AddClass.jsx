@@ -45,6 +45,11 @@ const AddClass = () => {
             })
 
     }
+
+const handelAddBtn = () =>{
+
+}
+
     // console.log(img_hosting_token)
     return (
         <div>
@@ -120,7 +125,7 @@ const AddClass = () => {
                     />
                 </div>
 
-                <button className="btn  bg-amber-500 p-2 w-28">Add class</button>
+                <button onClick={()=>handelAddBtn()} className="btn  bg-amber-500 p-2 w-28">Add class</button>
             </form>
         </div>
     );

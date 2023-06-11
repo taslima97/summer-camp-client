@@ -1,5 +1,7 @@
 import Swal from "sweetalert2";
 import useCart from "../../../hooks/useCart";
+import { Link } from "react-router-dom";
+
 
 
 const MyClass = () => {
@@ -36,9 +38,15 @@ const handelDelete = info =>{
   })
 }
 
+const handelPayment = (id) =>{
+// console.log(id)
+localStorage.setItem('price', id)
+}
+
+
   return (
     <div className="w-full">
-      <h2 className="text-5xl uppercase font-bold my-12 text-center">Student Dashboard</h2>
+      
       <div className="overflow-x-auto">
         <table className="table">
           <thead>
@@ -55,7 +63,7 @@ const handelDelete = info =>{
             </tr>
           </thead>
           <tbody>
-            {cart.map((info, index) => <tr key={info._id}>
+            {cart.map((info, index) => <tr key={info._id} >
               <th>
                 <label>
                   {index + 1}
@@ -72,9 +80,9 @@ const handelDelete = info =>{
                 {info.Name}
               </td>
               <td>{info.email}</td>
-              <td>{info.price}</td>
+              <td>{parseInt(info.price)}</td>
               <td>
-                <button className="btn btn-ghost btn-xs">Pay</button>
+               <Link to='/dashboard/payment'> <button onClick={()=>handelPayment(info.price)} className="btn btn-ghost btn-xs">Pay</button></Link>
               </td>
               <td>
                 <button onClick={()=>handelDelete(info)} className="btn btn-ghost btn-xs">delete</button>
@@ -82,6 +90,7 @@ const handelDelete = info =>{
             </tr>)}
           </tbody>
         </table>
+        
       </div>
     </div>
   );
