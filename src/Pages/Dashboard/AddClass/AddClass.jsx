@@ -22,8 +22,8 @@ const AddClass = () => {
             .then(imgResponse => {
                 if (imgResponse.success) {
                     const imgUrl = imgResponse.data.display_url;
-                    const { Name, availableSeats, email, instructorName, price, studentQuantity } = data;
-                    const allClass = { Name, availableSeats, email, instructorName, price, studentQuantity, image: imgUrl }
+                    const { Name, availableSeats, email, instructorName, price, studentQuantity, InstructorImg } = data;
+                    const allClass = { Name, availableSeats, email, instructorName, price, studentQuantity, InstructorImg,  image: imgUrl }
                     // console.log(allClass)
                     axiosSecure.post('/classes', allClass)
                         .then(data => {
@@ -62,6 +62,14 @@ const AddClass = () => {
                         type="file"
                         placeholder=" Class image"
                         {...register("image", { required: true })}
+                    />
+                </div>
+                <div>
+                    <label>Instructor Image:</label>
+                    <input className="input input-bordered my-4 w-full max-w-xs"
+                        type="file"
+                        placeholder=" image"
+                        {...register("InstructorImg", { required: true })}
                     />
                 </div>
 

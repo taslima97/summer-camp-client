@@ -1,13 +1,14 @@
 
 
 // eslint-disable-next-line react/prop-types
-const Popular = ({info}) => {
-   // eslint-disable-next-line react/prop-types
-   const { image, Name, price, studentQuantity, availableSeats, instructorName } = info;
+const TopInstructor = ({info}) => {
+    console.log(info)
+    // eslint-disable-next-line react/prop-types
+    const {instructorName, InstructorImg, price, Name, availableSeats, studentQuantity} = info;
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
-                <img src={image} alt="" className="rounded-xl h-48" />
+                <img src={InstructorImg} alt="" className="rounded-xl h-48" />
             </figure>
             <div className="card-body items-center text-center">
                 <h2 className="card-title">{Name}</h2>
@@ -19,7 +20,7 @@ const Popular = ({info}) => {
                 <div className="flex mt-4">
                     <p className="text-xl mr-12 font-bold">Price: {price}</p>
                     <div>
-                        <button className="btn bg-amber-500">Added</button>
+                        <button className="btn bg-amber-500">book now</button>
                     </div>
                 </div>
             </div>
@@ -27,4 +28,4 @@ const Popular = ({info}) => {
     );
 };
 
-export default Popular;
+export default TopInstructor;
