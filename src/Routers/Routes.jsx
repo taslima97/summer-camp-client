@@ -15,7 +15,8 @@ import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import AddClass from "../Pages/Dashboard/AddClass/AddClass";
 import AdminRoutes from "./AdminRoutes";
 import InstructorRoute from "./InstructorRoute";
-import StudentRoute from "./StudentRoute";
+import ManageClass from "../Pages/Dashboard/ManageClass/ManageClass";
+// import StudentRoute from "./StudentRoute";
 
 
 
@@ -53,14 +54,19 @@ export const router = createBrowserRouter([
     children:[
       {
         path:'myclass',
-        element:<StudentRoute><MyClass></MyClass></StudentRoute>
-      },{
+        element:<MyClass></MyClass>
+      },
+      {
         path:'users',
         element:<AdminRoutes><AllUsers></AllUsers></AdminRoutes>
       },
       {
         path:'addclass',
         element:<InstructorRoute><AddClass></AddClass></InstructorRoute>
+      },
+      {
+        path:'manageclass',
+        element:<AdminRoutes><ManageClass></ManageClass></AdminRoutes>
       }
     ]
    }

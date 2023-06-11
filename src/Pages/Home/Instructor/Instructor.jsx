@@ -9,7 +9,7 @@ const Instructor = () => {
       })
 
       const slicedinfo = classes.slice(0, 6);
-      console.log(slicedinfo)
+    //   console.log(slicedinfo)
     return (
        
         <div>

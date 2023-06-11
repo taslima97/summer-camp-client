@@ -2,7 +2,7 @@
 
 // eslint-disable-next-line react/prop-types
 const TopInstructor = ({info}) => {
-    console.log(info)
+    // console.log(info)
     // eslint-disable-next-line react/prop-types
     const {instructorName, InstructorImg, price, Name, availableSeats, studentQuantity} = info;
     return (

@@ -70,7 +70,7 @@ const AllUsers = () => {
                             <th>Email</th>
                             <th>Make Admin</th>
                             <th>Make Instructor</th>
-                            <th>Delete</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
