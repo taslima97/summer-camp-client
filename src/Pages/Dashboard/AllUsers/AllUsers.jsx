@@ -15,7 +15,7 @@ const AllUsers = () => {
 
 
     const handelMakeAdmin = user => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        fetch(`https://summer-camp-server-khaki.vercel.app/users/admin/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -35,7 +35,7 @@ const AllUsers = () => {
     }
 
     const handelMakeInstructor = user => {
-        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+        fetch(`https://summer-camp-server-khaki.vercel.app/users/instructor/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

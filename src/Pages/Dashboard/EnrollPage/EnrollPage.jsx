@@ -9,7 +9,7 @@ const EnrollPage = () => {
     const [enroll, setEnroll] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/payments/${user?.email}`)
+        fetch(`https://summer-camp-server-khaki.vercel.app/payments/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setEnroll(data)

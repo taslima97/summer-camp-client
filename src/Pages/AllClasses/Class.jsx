@@ -13,7 +13,7 @@ const handelCart = info =>{
     console.log(info)
     if (user&& user.email) {
         const selectedInfo = {selectId:_id,image, Name, price, studentQuantity, availableSeats,instructorName, email:user.email}
-        fetch('http://localhost:5000/carts',{
+        fetch('https://summer-camp-server-khaki.vercel.app/carts',{
             method:'POST',
             headers:{
                 'content-type': 'application/json'

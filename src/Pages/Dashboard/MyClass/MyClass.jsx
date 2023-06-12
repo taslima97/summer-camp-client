@@ -20,7 +20,7 @@ const handelDelete = info =>{
   }).then((result) => {
     if (result.isConfirmed) {
       
-      fetch(`http://localhost:5000/carts/${info._id}`,{
+      fetch(`https://summer-camp-server-khaki.vercel.app/carts/${info._id}`,{
         method:'DELETE'
       })
       .then(res => res.json())

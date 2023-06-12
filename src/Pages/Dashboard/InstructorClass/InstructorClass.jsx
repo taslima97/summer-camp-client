@@ -7,7 +7,7 @@ const InstructorClass = () => {
     const { user } = useAuth();
     const [items, setItems] = useState([])
         useEffect(() => {
-            fetch(`http://localhost:5000/classes/${user?.email}`)
+            fetch(`https://summer-camp-server-khaki.vercel.app/classes/${user?.email}`)
                 .then(res => res.json())
                 .then(data => {
                     setItems(data)
