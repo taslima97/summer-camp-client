@@ -19,6 +19,9 @@ import ManageClass from "../Pages/Dashboard/ManageClass/ManageClass";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import EnrollPage from "../Pages/Dashboard/EnrollPage/EnrollPage";
 import InstructorClass from "../Pages/Dashboard/InstructorClass/InstructorClass";
+import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
+import InsHome from "../Pages/Dashboard/InsHome/InsHome";
+import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 // import StudentRoute from "./StudentRoute";
 
 
@@ -55,6 +58,18 @@ export const router = createBrowserRouter([
     path:'dashboard',
     element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children:[
+      {
+        path:'adminhome',
+        element:<AdminHome></AdminHome>
+      },
+      {
+        path:'instructorhome',
+        element:<InsHome></InsHome>
+      },
+      {
+        path:'userhome',
+        element:<UserHome></UserHome>
+      },
       {
         path:'myclass',
         element:<MyClass></MyClass>
