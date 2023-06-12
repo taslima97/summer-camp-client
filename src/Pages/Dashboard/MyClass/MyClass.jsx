@@ -38,9 +38,9 @@ const handelDelete = info =>{
   })
 }
 
-const handelPayment = (id) =>{
+const handelPayment = (price, ) =>{
 // console.log(id)
-localStorage.setItem('price', id)
+localStorage.setItem('price', price)
 }
 
 

@@ -7,14 +7,17 @@ import useAuth from "../../../hooks/useAuth";
 
 
 // eslint-disable-next-line react/prop-types
-const CheakoutFrom = ({price}) => {
+const CheakoutFrom = ({price, cart}) => {
     // console.log(price)
     const stripe = useStripe();
     const elements = useElements();
     const {user} = useAuth()
     const [axiosSecure] = useAxiosSecure();
-    const [cardError, setCardError] = useState('')
-const [clientSecret, setClientSecret] = useState('')
+    const [cardError, setCardError] = useState('');
+const [clientSecret, setClientSecret] = useState('');
+const [processing, setProcessing] = useState(false);
+const [transactionId, setTransactionId] = useState('')
+
 
 useEffect(()=>{
 axiosSecure.post('/create-payment-intent',{price})
@@ -44,8 +47,11 @@ axiosSecure.post('/create-payment-intent',{price})
         }
         else{
             setCardError('')
-            console.log('paymentMethod', paymentMethod)
+            // console.log('paymentMethod', paymentMethod)
         }
+
+setProcessing(true)
+
         const {paymentIntent, error:confirmError} = await stripe.confirmCardPayment(
            clientSecret,
             {
@@ -59,9 +65,34 @@ axiosSecure.post('/create-payment-intent',{price})
             },
           );
           if (confirmError) {
-            console.log(confirmError)
+            // console.log(confirmError)
           }
           console.log(paymentIntent)
+setProcessing(false)
+          if (paymentIntent.status === "succeeded") {
+            setTransactionId(paymentIntent.id)
+            const payment = {
+                name: user.displayName,
+                email: user?.email, 
+                transactionId: paymentIntent.id,
+                date: new Date(),
+                price,
+                status: 'service pending',
+                // eslint-disable-next-line react/prop-types
+                cartId: cart.map(item => item._id),
+                cartImg: cart.map(item => item.image)
+        }
+
+axiosSecure.post('/payments', payment)
+.then(res =>{
+console.log(res.data)
+if(res.data.insertedId){
+    // display data
+}
+})
+
+
+          }
     }
 
 
@@ -85,11 +116,12 @@ axiosSecure.post('/create-payment-intent',{price})
                     },
                 }}
             />
-            <button className="btn bg-orange-500 p-2" type="submit" disabled={!stripe || !clientSecret}>
+            <button className="btn bg-orange-500 p-2" type="submit" disabled={!stripe || !clientSecret || processing}>
                 Pay
             </button>
         </form>
         {cardError && <p className="text-center text-red-500">{cardError}</p>}
+        {transactionId && <p className="text-lime-600">Transaction completed</p>}
         </>
     );
 };
