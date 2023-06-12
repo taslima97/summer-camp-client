@@ -17,6 +17,7 @@ import AdminRoutes from "./AdminRoutes";
 import InstructorRoute from "./InstructorRoute";
 import ManageClass from "../Pages/Dashboard/ManageClass/ManageClass";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import EnrollPage from "../Pages/Dashboard/EnrollPage/EnrollPage";
 // import StudentRoute from "./StudentRoute";
 
 
@@ -73,7 +74,13 @@ export const router = createBrowserRouter([
         path:'payment',
         element:<Payment></Payment>,
        
-      }
+      },
+      {
+        path:'enrollpage',
+        element:<EnrollPage></EnrollPage>,
+       
+      },
+
     ]
    }
 ]);

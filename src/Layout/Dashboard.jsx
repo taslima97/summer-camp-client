@@ -44,7 +44,7 @@ const [isAdmin] = useAdmin();
         {/* student content */}
         <Link to='/dashboard'>Student home</Link>
         <Link to='/dashboard/myclass'>My Class</Link>
-        <Link>My enrolled class</Link>
+        <Link to='/dashboard/enrollpage'>My enrolled class</Link>
         <Link>Payment history</Link>
         </>
       }

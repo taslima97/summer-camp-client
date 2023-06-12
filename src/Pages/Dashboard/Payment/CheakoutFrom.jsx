@@ -7,7 +7,7 @@ import useAuth from "../../../hooks/useAuth";
 
 
 // eslint-disable-next-line react/prop-types
-const CheakoutFrom = ({price, cart}) => {
+const CheakoutFrom = ({price, image}) => {
     // console.log(price)
     const stripe = useStripe();
     const elements = useElements();
@@ -47,7 +47,7 @@ axiosSecure.post('/create-payment-intent',{price})
         }
         else{
             setCardError('')
-            // console.log('paymentMethod', paymentMethod)
+            console.log('paymentMethod', paymentMethod)
         }
 
 setProcessing(true)
@@ -72,15 +72,15 @@ setProcessing(false)
           if (paymentIntent.status === "succeeded") {
             setTransactionId(paymentIntent.id)
             const payment = {
+                image:image,
                 name: user.displayName,
                 email: user?.email, 
                 transactionId: paymentIntent.id,
                 date: new Date(),
                 price,
                 status: 'service pending',
-                // eslint-disable-next-line react/prop-types
-                cartId: cart.map(item => item._id),
-                cartImg: cart.map(item => item.image)
+              
+               
         }
 
 axiosSecure.post('/payments', payment)

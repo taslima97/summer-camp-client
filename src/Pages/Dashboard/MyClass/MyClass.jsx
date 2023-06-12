@@ -38,9 +38,10 @@ const handelDelete = info =>{
   })
 }
 
-const handelPayment = (price, ) =>{
+const handelPayment = (price, image) =>{
 // console.log(id)
 localStorage.setItem('price', price)
+localStorage.setItem('image', image)
 }
 
 
@@ -82,7 +83,7 @@ localStorage.setItem('price', price)
               <td>{info.email}</td>
               <td>{parseInt(info.price)}</td>
               <td>
-               <Link to='/dashboard/payment'> <button onClick={()=>handelPayment(info.price)} className="btn btn-ghost btn-xs">Pay</button></Link>
+               <Link to='/dashboard/payment'> <button onClick={()=>handelPayment(info.price, info.image)} className="btn btn-ghost btn-xs">Pay</button></Link>
               </td>
               <td>
                 <button onClick={()=>handelDelete(info)} className="btn btn-ghost btn-xs">delete</button>
